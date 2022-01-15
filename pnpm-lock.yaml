@@ -4,6 +4,7 @@ specifiers:
   '@chakra-ui/react': ^1.7.4
   '@emotion/react': ^11.7.1
   '@emotion/styled': ^11.6.0
+  '@fontsource/poppins': ^4.5.0
   '@types/node': 17.0.8
   '@types/react': 17.0.38
   '@typescript-eslint/eslint-plugin': ^5.9.1
@@ -18,24 +19,25 @@ specifiers:
   eslint-plugin-react: ^7.28.0
   framer-motion: ^5.6.0
   husky: ^7.0.4
-  iconoir: ^1.0.0
   lint-staged: ^12.1.7
   next: 12.0.8
   prettier: ^2.5.1
   pretty-quick: ^3.1.3
   react: 17.0.2
   react-dom: 17.0.2
+  react-icons: ^4.3.1
   typescript: 4.5.4
 
 dependencies:
   '@chakra-ui/react': 1.7.4_22baa6f5acaf9d65b412ab335954e6a6
   '@emotion/react': 11.7.1_b08e3c15324cbe90a6ff8fcd416c932c
   '@emotion/styled': 11.6.0_0044a6ec6dcf5de7705bffaaff7afd26
+  '@fontsource/poppins': 4.5.0
   framer-motion: 5.6.0_react-dom@17.0.2+react@17.0.2
-  iconoir: 1.0.0
   next: 12.0.8_react-dom@17.0.2+react@17.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  react-icons: 4.3.1_react@17.0.2
 
 devDependencies:
   '@types/node': 17.0.8
@@ -1073,6 +1075,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@fontsource/poppins/4.5.0:
+    resolution: {integrity: sha512-RqgMIQqKHWNH3IUj+a0MAhlb4g5fftsXRTJ2bauefBmfM8Ja5q+qQZjKwyB/iCc+paJD320zFnLJ8G+y1ZyemQ==}
+    dev: false
 
   /@humanwhocodes/config-array/0.5.0:
     resolution: {integrity: sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==}
@@ -2587,10 +2593,6 @@ packages:
     hasBin: true
     dev: true
 
-  /iconoir/1.0.0:
-    resolution: {integrity: sha512-rZ4ZMMOarUfsRrfH7h3MGIFVNrcWsThtJWpTuZOp/FYhSomaa32HhHg8WH0V3VlN7MIVK4VMD2O7jNq6jRKY3w==}
-    dev: false
-
   /ignore/4.0.6:
     resolution: {integrity: sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==}
     engines: {node: '>= 4'}
@@ -3354,6 +3356,14 @@ packages:
       use-sidecar: 1.0.5_react@17.0.2
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /react-icons/4.3.1_react@17.0.2:
+    resolution: {integrity: sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 17.0.2
     dev: false
 
   /react-is/16.13.1:

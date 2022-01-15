@@ -1,6 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import { Navbar } from '../components';
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -11,9 +13,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <h1>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <Navbar />
       </main>
     </div>
   );
