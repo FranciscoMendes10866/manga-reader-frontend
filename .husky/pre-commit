@@ -1,10 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo '🏗️👷 Styling, testing and building your project before committing'
-
-echo '🧪 ☢️🧪 ☢️ Not bad, let me check if your tests pass... 🧪 ☢️🧪 ☢️'
+# Run all the tests
+echo '🧪 ☢️🧪 ☢️ First of all, let me check if your tests pass... 🧪 ☢️🧪 ☢️'
 pnpx playwright test
+
+echo '🏗️👷 Styling, testing and building your project before committing'
 
 # Check Prettier standards
 pnpm check-format ||
@@ -30,6 +31,10 @@ pnpm check-types ||
     false;
 )
 
+# Check Eslint standards on staged files
+echo '🧐🧐🧐🧐 Everything looks fine until now. Let me check your staged files. 🧐🧐🧐🧐'
+pnpx lint-staged
+
 # If everything passes... Now we can commit
 echo '🤔🤔🤔🤔... Alright.... Code looks good to me... Trying to build now. 🤔🤔🤔🤔'
 
@@ -40,11 +45,6 @@ pnpm build ||
     '
     false;
 )
-
-echo '🧐🧐🧐🧐 Everything looks fine until now. Let me check your staged files. 🧐🧐🧐🧐'
-pnpx lint-staged
-
-
 
 # If everything passes... Now we can commit
 echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
