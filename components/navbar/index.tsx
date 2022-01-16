@@ -3,12 +3,14 @@ import { BiSearchAlt } from 'react-icons/bi';
 
 export const Navbar = () => {
   return (
-    <Box
+    <Flex
       position="fixed"
-      paddingTop={3}
-      paddingBottom={3}
+      height={20}
+      justifyContent="center"
+      alignItems="center"
       width="full"
-      background="brand.900"
+      // background="brand.900"
+      background="transparent"
     >
       <Container maxW="container.xl">
         <Flex alignItems="center" justifyContent="space-between">
@@ -64,6 +66,6 @@ export const Navbar = () => {
           </Box>
         </Flex>
       </Container>
-    </Box>
+    </Flex>
   );
 };

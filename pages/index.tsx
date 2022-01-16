@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { Navbar } from '../components';
+import { Box } from '@chakra-ui/react';
 
 const Home: NextPage = () => {
   return (
@@ -14,6 +15,13 @@ const Home: NextPage = () => {
 
       <main>
         <Navbar />
+        <Box
+          height="100vh"
+          background="#0f0e13"
+          backgroundImage="radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+       radial-gradient(at 30% 40%, rgba(133,255,189, 0.2) 0, transparent 50%), 
+       radial-gradient(at 70% 60%, rgba(0,219,222, 0.2) 0, transparent 50%)"
+        />
       </main>
     </div>
   );
