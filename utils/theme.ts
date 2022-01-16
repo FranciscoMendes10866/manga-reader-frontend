@@ -6,7 +6,7 @@ export default extendTheme({
     brand: {
       900: 'rgb(21, 34, 50, 1)',
       800: 'rgb(211, 213, 243, 1)',
-      700: '#2a69ac',
+      700: 'rgb(11,22,34, 1)',
     },
   },
   fonts: {

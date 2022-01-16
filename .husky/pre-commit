@@ -1,9 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# use this in the future
 # Run all the tests
-echo '🧪 ☢️🧪 ☢️ First of all, let me check if your tests pass... 🧪 ☢️🧪 ☢️'
-pnpx playwright test
+# echo '🧪 ☢️🧪 ☢️ First of all, let me check if your tests pass... 🧪 ☢️🧪 ☢️'
+# pnpx playwright test
 
 echo '🏗️👷 Styling, testing and building your project before committing'
 

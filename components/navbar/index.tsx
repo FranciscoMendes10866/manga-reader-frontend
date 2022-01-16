@@ -1,22 +1,30 @@
-import { Flex, Text, Box, Container, Image, Button } from '@chakra-ui/react';
+import { Flex, Text, Box, Container, Button } from '@chakra-ui/react';
 import { BiSearchAlt } from 'react-icons/bi';
+import Image from 'next/image';
+
+import logo from '../../assets/logo-min.png';
 
 export const Navbar = () => {
   return (
     <Flex
-      position="fixed"
       height={20}
       justifyContent="center"
       alignItems="center"
       width="full"
-      // background="brand.900"
-      background="transparent"
+      background="brand.900"
     >
       <Container maxW="container.xl">
         <Flex alignItems="center" justifyContent="space-between">
-          <Box height={10} width={10} borderRadius={6} overflow="hidden">
-            <Image src="https://bit.ly/dan-abramov" alt="Dan Abramov" />
-          </Box>
+          <Flex alignItems="center" justifyContent="center">
+            <Box height={10} width={10} overflow="hidden">
+              <Image src={logo} alt="Dan Abramov" />
+            </Box>
+            <Box marginLeft={4}>
+              <Text fontSize="md" fontWeight="bold" color="white">
+                Dango Manga
+              </Text>
+            </Box>
+          </Flex>
           <Flex alignItems="center" justifyContent="space-between">
             <Box cursor="pointer">
               <Text
