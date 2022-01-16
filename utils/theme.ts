@@ -4,9 +4,9 @@ import { extendTheme } from '@chakra-ui/react';
 export default extendTheme({
   colors: {
     brand: {
-      900: 'rgb(21, 34, 50, 1)',
-      800: 'rgb(211, 213, 243, 1)',
-      700: 'rgb(11,22,34, 1)',
+      900: '#393E46',
+      800: '#EEEEEE',
+      700: '#222831',
     },
   },
   fonts: {
