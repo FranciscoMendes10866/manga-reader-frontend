@@ -18,7 +18,7 @@ export const Navbar = () => {
             <Image src="https://bit.ly/dan-abramov" alt="Dan Abramov" />
           </Box>
           <Flex alignItems="center" justifyContent="space-between">
-            <Box marginRight={6} cursor="pointer">
+            <Box cursor="pointer">
               <Text
                 fontSize="sm"
                 fontWeight="medium"
@@ -28,7 +28,7 @@ export const Navbar = () => {
                 Featured
               </Text>
             </Box>
-            <Box marginLeft={6} marginRight={6} cursor="pointer">
+            <Box marginLeft={6} cursor="pointer">
               <Text
                 fontSize="sm"
                 fontWeight="medium"
