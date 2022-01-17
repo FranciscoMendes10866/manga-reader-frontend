@@ -1,6 +1,7 @@
 import { Flex, Text, Box, Container, IconButton } from '@chakra-ui/react';
 import { BiSearchAlt } from 'react-icons/bi';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import logo from '../../assets/logo-min.png';
 
@@ -28,14 +29,16 @@ export const Navbar = () => (
         </Flex>
         <Flex alignItems="center" justifyContent="space-between">
           <Box cursor="pointer">
-            <Text
-              fontSize="sm"
-              fontWeight="medium"
-              letterSpacing="wider"
-              color="brand.800"
-            >
-              Featured
-            </Text>
+            <Link href="/">
+              <Text
+                fontSize="sm"
+                fontWeight="medium"
+                letterSpacing="wider"
+                color="brand.800"
+              >
+                Featured
+              </Text>
+            </Link>
           </Box>
           <Box marginLeft={6} cursor="pointer">
             <Text
@@ -44,18 +47,20 @@ export const Navbar = () => (
               letterSpacing="wider"
               color="brand.800"
             >
-              Latest
+              Popular
             </Text>
           </Box>
           <Box marginLeft={6} cursor="pointer">
-            <Text
-              fontSize="sm"
-              fontWeight="medium"
-              letterSpacing="wider"
-              color="brand.800"
-            >
-              Browse
-            </Text>
+            <Link href="/browse">
+              <Text
+                fontSize="sm"
+                fontWeight="medium"
+                letterSpacing="wider"
+                color="brand.800"
+              >
+                Browse
+              </Text>
+            </Link>
           </Box>
           <Box marginLeft={6} cursor="pointer">
             <Text
