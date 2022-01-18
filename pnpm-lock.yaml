@@ -4,7 +4,7 @@ specifiers:
   '@chakra-ui/react': ^1.7.4
   '@emotion/react': ^11.7.1
   '@emotion/styled': ^11.6.0
-  '@fontsource/poppins': ^4.5.0
+  '@fontsource/sora': ^4.5.0
   '@graphql-codegen/cli': 2.3.1
   '@graphql-codegen/typescript': 2.4.2
   '@graphql-codegen/typescript-operations': 2.2.2
@@ -42,7 +42,7 @@ dependencies:
   '@chakra-ui/react': 1.7.4_22baa6f5acaf9d65b412ab335954e6a6
   '@emotion/react': 11.7.1_b08e3c15324cbe90a6ff8fcd416c932c
   '@emotion/styled': 11.6.0_0044a6ec6dcf5de7705bffaaff7afd26
-  '@fontsource/poppins': 4.5.0
+  '@fontsource/sora': 4.5.0
   framer-motion: 5.6.0_react-dom@17.0.2+react@17.0.2
   graphql: 16.2.0
   graphql-tag: 2.12.6_graphql@16.2.0
@@ -1839,8 +1839,8 @@ packages:
       - supports-color
     dev: true
 
-  /@fontsource/poppins/4.5.0:
-    resolution: {integrity: sha512-RqgMIQqKHWNH3IUj+a0MAhlb4g5fftsXRTJ2bauefBmfM8Ja5q+qQZjKwyB/iCc+paJD320zFnLJ8G+y1ZyemQ==}
+  /@fontsource/sora/4.5.0:
+    resolution: {integrity: sha512-bXr7HZPHh/dtfcp9UfEIrYhiMzmcsGvooz9kkmxi5iYwuqs4O1YWfkNbbPSMoRH/cucrMtlGUuC9eRbFx4Yn5Q==}
     dev: false
 
   /@graphql-codegen/cli/2.3.1_94699f1327f38cf86dd76451498605dd:
