@@ -41,14 +41,16 @@ export const Navbar = () => (
             </Link>
           </Box>
           <Box marginLeft={6} cursor="pointer">
-            <Text
-              fontSize="sm"
-              fontWeight="medium"
-              letterSpacing="wider"
-              color="brand.800"
-            >
-              Popular
-            </Text>
+            <Link href="/popular">
+              <Text
+                fontSize="sm"
+                fontWeight="medium"
+                letterSpacing="wider"
+                color="brand.800"
+              >
+                Popular
+              </Text>
+            </Link>
           </Box>
           <Box marginLeft={6} cursor="pointer">
             <Link href="/browse">

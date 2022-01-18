@@ -59,6 +59,7 @@ export type GetMangaListQuery = {
             id?: string | null | undefined;
             name?: string | null | undefined;
             thumbnail?: string | null | undefined;
+            description?: string | null | undefined;
           }
         | null
         | undefined
@@ -73,6 +74,7 @@ export const GetMangaListDocument = gql`
       id
       name
       thumbnail
+      description
     }
   }
 `;

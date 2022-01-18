@@ -3,5 +3,6 @@ query getMangaList {
     id
     name
     thumbnail
+    description
   }
 }
