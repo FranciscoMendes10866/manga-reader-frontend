@@ -1,46 +1,15 @@
-import {
-  Container,
-  SimpleGrid,
-  Select,
-  Flex,
-  Input,
-  useBreakpointValue,
-  IconButton,
-  Text,
-  InputGroup,
-  InputLeftElement,
-} from '@chakra-ui/react';
-import { RiArrowDropDownLine } from 'react-icons/ri';
-import { CgOptions } from 'react-icons/cg';
-import { BiSearch } from 'react-icons/bi';
+import { Box, Container, SimpleGrid, useDisclosure } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { useGetMangaListQuery, Manga } from '../generated/graphql';
 import VerticalCard from '../components/VerticalCard';
-import {
-  MangaAiringStatus,
-  MangaFormatOptions,
-  MangaCategories,
-} from '../assets/data';
+import MangaFiltering from '../components/MangaFiltering';
+import BottomSheet from '../components/BottomSheet';
 
 const Browse: NextPage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [result] = useGetMangaListQuery();
-
-  const visibility = useBreakpointValue({ base: 'none', md: 'flex' });
-  const width = useBreakpointValue({ base: 'full', md: '180px', lg: '250px' });
-  const filterButtonVisibility = useBreakpointValue({
-    base: 'flex',
-    md: 'none',
-  });
-  const selectComponentWidth = useBreakpointValue({
-    md: '180px',
-    lg: '250px',
-  });
-  const alignElements = useBreakpointValue({
-    base: 'flex-end',
-    md: 'center',
-  });
 
   return (
     <div>
@@ -52,147 +21,20 @@ const Browse: NextPage = () => {
 
       <main>
         <Container paddingTop={12} maxW="container.xl">
-          <Flex
-            alignItems={alignElements}
-            justifyContent="space-between"
-            paddingBottom={14}
-          >
-            <Flex
-              alignItems="flex-start"
-              justifyContent="center"
-              flexDirection="column"
-              width={width}
-            >
-              <Text
-                marginBottom={2}
-                color="brand.800"
-                fontSize="sm"
-                letterSpacing="wider"
-              >
-                Search
-              </Text>
-              <InputGroup>
-                <InputLeftElement pointerEvents="none">
-                  <BiSearch size={16} color="brand.800" />
-                </InputLeftElement>
-                <Input
-                  variant="filled"
-                  placeholder="Search"
-                  color="brand.800"
-                  backgroundColor="brand.900"
-                  fontSize="sm"
-                />
-              </InputGroup>
-            </Flex>
-            <IconButton
-              aria-label="Search database"
-              icon={<CgOptions />}
-              marginLeft={6}
-              variant="ghost"
-              background="brand.900"
-              color="brand.800"
-              display={filterButtonVisibility}
-            />
-            <Flex
-              alignItems="flex-start"
-              justifyContent="center"
-              flexDirection="column"
-              display={visibility}
-            >
-              <Text
-                marginBottom={2}
-                color="brand.800"
-                fontSize="sm"
-                letterSpacing="wider"
-              >
-                Genre
-              </Text>
-              <Select
-                placeholder="Any"
-                color="brand.800"
-                backgroundColor="brand.900"
-                variant="filled"
-                width={selectComponentWidth}
-                icon={<RiArrowDropDownLine />}
-                fontSize="sm"
-              >
-                {MangaCategories.map((category, index) => (
-                  <option
-                    key={`manga-category-option-${index}`}
-                    value={category.value}
-                  >
-                    {category.value}
-                  </option>
-                ))}
-              </Select>
-            </Flex>
-            <Flex
-              alignItems="flex-start"
-              justifyContent="center"
-              flexDirection="column"
-              display={visibility}
-            >
-              <Text
-                marginBottom={2}
-                color="brand.800"
-                fontSize="sm"
-                letterSpacing="wider"
-              >
-                Format
-              </Text>
-              <Select
-                placeholder="Any"
-                color="brand.800"
-                backgroundColor="brand.900"
-                variant="filled"
-                width={selectComponentWidth}
-                icon={<RiArrowDropDownLine />}
-                fontSize="sm"
-              >
-                {MangaFormatOptions.map((format, index) => (
-                  <option
-                    key={`manga-format-option-${index}`}
-                    value={format.name}
-                  >
-                    {format.name}
-                  </option>
-                ))}
-              </Select>
-            </Flex>
-            <Flex
-              alignItems="flex-start"
-              justifyContent="center"
-              flexDirection="column"
-              display={visibility}
-            >
-              <Text
-                marginBottom={2}
-                color="brand.800"
-                fontSize="sm"
-                letterSpacing="wider"
-              >
-                Publishing status
-              </Text>
-              <Select
-                placeholder="Any"
-                color="brand.800"
-                backgroundColor="brand.900"
-                variant="filled"
-                width={selectComponentWidth}
-                icon={<RiArrowDropDownLine />}
-                fontSize="sm"
-              >
-                {MangaAiringStatus.map((status, index) => (
-                  <option
-                    key={`manga-status-option-${index}`}
-                    value={status.value}
-                  >
-                    {status.name}
-                  </option>
-                ))}
-              </Select>
-            </Flex>
-          </Flex>
+          <MangaFiltering
+            search={(value) => console.log(value)}
+            selectCategory={(option) => console.log(option)}
+            selectFormat={(option) => console.log(option)}
+            selectStatus={(option) => console.log(option)}
+            openBottomSheet={onOpen}
+          />
+          <BottomSheet
+            header="Hello"
+            borderRadius={22}
+            isOpen={isOpen}
+            onClose={onClose}
+            content={<Box />}
+          />
           <SimpleGrid columns={{ sm: 2, md: 4, lg: 6 }} spacing={10}>
             {result.data?.getMangaList &&
               result.data?.getMangaList.map((manga) => (
