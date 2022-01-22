@@ -17,7 +17,7 @@ interface IBottomSheetProps {
   borderRadius?: number;
 }
 
-const BottomSheet: NextPage<IBottomSheetProps> = ({
+export const BottomSheet: NextPage<IBottomSheetProps> = ({
   isOpen,
   onClose,
   content,
@@ -33,5 +33,3 @@ const BottomSheet: NextPage<IBottomSheetProps> = ({
     </DrawerContent>
   </Drawer>
 );
-
-export default BottomSheet;

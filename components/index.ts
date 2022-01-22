@@ -3,3 +3,4 @@ export * from './VerticalCard';
 export * from './HorizontalCard';
 export * from './MangaFiltering';
 export * from './BottomSheet';
+export * from './BottomNavbar';

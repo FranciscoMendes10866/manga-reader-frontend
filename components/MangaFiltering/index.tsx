@@ -27,7 +27,7 @@ interface IMangaFilteringProps {
   openBottomSheet: () => void;
 }
 
-const MangaFiltering: NextPage<IMangaFilteringProps> = ({
+export const MangaFiltering: NextPage<IMangaFilteringProps> = ({
   search,
   selectCategory,
   selectFormat,
@@ -192,5 +192,3 @@ const MangaFiltering: NextPage<IMangaFilteringProps> = ({
     </Flex>
   );
 };
-
-export default MangaFiltering;

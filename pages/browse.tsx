@@ -3,9 +3,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { useGetMangaListQuery, Manga } from '../generated/graphql';
-import VerticalCard from '../components/VerticalCard';
-import MangaFiltering from '../components/MangaFiltering';
-import BottomSheet from '../components/BottomSheet';
+import { MangaFiltering, BottomSheet, VerticalCard } from '../components';
 
 const Browse: NextPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

@@ -16,7 +16,7 @@ interface IHorizontalCardProps {
   manga: Manga;
 }
 
-const HorizontalCard: NextPage<IHorizontalCardProps> = ({ manga }) => (
+const Component: NextPage<IHorizontalCardProps> = ({ manga }) => (
   <Flex
     padding={2}
     background="rgba( 255, 255, 255, 0.1 )"
@@ -88,4 +88,4 @@ const HorizontalCard: NextPage<IHorizontalCardProps> = ({ manga }) => (
   </Flex>
 );
 
-export default memo(HorizontalCard);
+export const HorizontalCard = memo(Component);

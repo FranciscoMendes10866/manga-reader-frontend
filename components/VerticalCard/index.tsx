@@ -8,7 +8,7 @@ interface IVerticalCardProps {
   manga: Manga;
 }
 
-const VerticalCard: NextPage<IVerticalCardProps> = ({ manga }) => (
+const Component: NextPage<IVerticalCardProps> = ({ manga }) => (
   <Box>
     <Box
       bg="tomato"
@@ -35,4 +35,4 @@ const VerticalCard: NextPage<IVerticalCardProps> = ({ manga }) => (
   </Box>
 );
 
-export default memo(VerticalCard);
+export const VerticalCard = memo(Component);

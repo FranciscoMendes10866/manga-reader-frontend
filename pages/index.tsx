@@ -1,11 +1,12 @@
-import { Container, SimpleGrid } from '@chakra-ui/react';
+import { Container, SimpleGrid, useMediaQuery } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { useGetMangaListQuery, Manga } from '../generated/graphql';
-import VerticalCard from '../components/VerticalCard';
+import { VerticalCard } from '../components';
 
 const Home: NextPage = () => {
+  const [isLargerThan803] = useMediaQuery('(min-width: 803px)');
   const [result] = useGetMangaListQuery();
 
   return (
@@ -17,7 +18,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <Container paddingTop={20} maxW="container.xl">
+        <Container paddingTop={isLargerThan803 ? 20 : 10} maxW="container.xl">
           <SimpleGrid columns={{ sm: 2, md: 4, lg: 6 }} spacing={10}>
             {result.data?.getMangaList &&
               result.data?.getMangaList.map((manga) => (
