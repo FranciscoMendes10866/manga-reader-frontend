@@ -19,7 +19,10 @@ const Popular: NextPage = () => {
 
       <main>
         <Container paddingTop={isLargerThan803 ? 20 : 10} maxW="container.xl">
-          <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={10}>
+          <SimpleGrid
+            columns={{ sm: 1, md: 2 }}
+            spacing={isLargerThan803 ? 10 : 6}
+          >
             {result.data?.getMangaList &&
               result.data?.getMangaList.map((manga) => (
                 <HorizontalCard key={manga?.id} manga={manga as Manga} />

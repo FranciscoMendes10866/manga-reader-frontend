@@ -19,7 +19,10 @@ const Home: NextPage = () => {
 
       <main>
         <Container paddingTop={isLargerThan803 ? 20 : 10} maxW="container.xl">
-          <SimpleGrid columns={{ sm: 2, md: 4, lg: 6 }} spacing={10}>
+          <SimpleGrid
+            columns={{ sm: 2, md: 4, lg: 6 }}
+            spacing={isLargerThan803 ? 10 : 8}
+          >
             {result.data?.getMangaList &&
               result.data?.getMangaList.map((manga) => (
                 <VerticalCard key={manga?.id} manga={manga as Manga} />
