@@ -1,4 +1,4 @@
-import '@fontsource/sora';
+import '@fontsource/poppins';
 import { extendTheme } from '@chakra-ui/react';
 
 export default extendTheme({
@@ -10,7 +10,7 @@ export default extendTheme({
     },
   },
   fonts: {
-    heading: 'Sora',
-    body: 'Sora',
+    heading: 'Poppins, sans-serif',
+    body: 'Poppins, sans-serif',
   },
 });

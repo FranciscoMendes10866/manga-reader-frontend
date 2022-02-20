@@ -1,0 +1,11 @@
+query getLatestMangaUpdates {
+  latest: getLatestMangaUpdates {
+    ID
+    name
+    thumbnail
+    chapters {
+      ID
+      CreatedAt
+    }
+  }
+}

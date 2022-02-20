@@ -21,42 +21,95 @@ export type Scalars = {
   Float: number;
 };
 
-export type Chapter = {
-  __typename?: 'Chapter';
-  id?: Maybe<Scalars['ID']>;
-  mangaId?: Maybe<Scalars['ID']>;
+export type Categories = {
+  __typename?: 'Categories';
+  CreatedAt?: Maybe<Scalars['String']>;
+  DeletedAt?: Maybe<Scalars['String']>;
+  ID?: Maybe<Scalars['String']>;
+  UpdatedAt?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
-  pages?: Maybe<Scalars['String']>;
 };
 
-export type Manga = {
-  __typename?: 'Manga';
-  chapters?: Maybe<Array<Maybe<Chapter>>>;
+export type Chapters = {
+  __typename?: 'Chapters';
+  CreatedAt?: Maybe<Scalars['String']>;
+  DeletedAt?: Maybe<Scalars['String']>;
+  ID?: Maybe<Scalars['String']>;
+  UpdatedAt?: Maybe<Scalars['String']>;
+  manga_id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type GetAllMangasResponse = {
+  __typename?: 'GetAllMangasResponse';
+  CreatedAt?: Maybe<Scalars['String']>;
+  DeletedAt?: Maybe<Scalars['String']>;
+  ID?: Maybe<Scalars['String']>;
+  UpdatedAt?: Maybe<Scalars['String']>;
+  categories?: Maybe<Array<Maybe<Categories>>>;
   description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['ID']>;
   name?: Maybe<Scalars['String']>;
   thumbnail?: Maybe<Scalars['String']>;
 };
 
+export type GetChapterResponse = {
+  __typename?: 'GetChapterResponse';
+  CreatedAt?: Maybe<Scalars['String']>;
+  DeletedAt?: Maybe<Scalars['String']>;
+  ID?: Maybe<Scalars['String']>;
+  UpdatedAt?: Maybe<Scalars['String']>;
+  manga_id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  pages?: Maybe<Array<Maybe<Pages>>>;
+};
+
+export type GetMangaDetailsResponse = {
+  __typename?: 'GetMangaDetailsResponse';
+  CreatedAt?: Maybe<Scalars['String']>;
+  DeletedAt?: Maybe<Scalars['String']>;
+  ID?: Maybe<Scalars['String']>;
+  UpdatedAt?: Maybe<Scalars['String']>;
+  chapters?: Maybe<Array<Maybe<Chapters>>>;
+  description?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  thumbnail?: Maybe<Scalars['String']>;
+};
+
+export type Pages = {
+  __typename?: 'Pages';
+  CreatedAt?: Maybe<Scalars['String']>;
+  DeletedAt?: Maybe<Scalars['String']>;
+  ID?: Maybe<Scalars['String']>;
+  UpdatedAt?: Maybe<Scalars['String']>;
+  chapter_id?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+};
+
 export type Query = {
   __typename?: 'Query';
-  getMangaDetails?: Maybe<Manga>;
-  getMangaList?: Maybe<Array<Maybe<Manga>>>;
+  getAllMangas?: Maybe<Array<Maybe<GetAllMangasResponse>>>;
+  getChapter?: Maybe<GetChapterResponse>;
+  getLatestMangaUpdates?: Maybe<Array<Maybe<GetMangaDetailsResponse>>>;
+  getMangaDetails?: Maybe<GetMangaDetailsResponse>;
+};
+
+export type QueryGetChapterArgs = {
+  chapterId: Scalars['ID'];
 };
 
 export type QueryGetMangaDetailsArgs = {
   mangaId: Scalars['ID'];
 };
 
-export type GetMangaListQueryVariables = Exact<{ [key: string]: never }>;
+export type GetAllMangasQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetMangaListQuery = {
+export type GetAllMangasQuery = {
   __typename?: 'Query';
-  getMangaList?:
+  list?:
     | Array<
         | {
-            __typename?: 'Manga';
-            id?: string | null | undefined;
+            __typename?: 'GetAllMangasResponse';
+            ID?: string | null | undefined;
             name?: string | null | undefined;
             thumbnail?: string | null | undefined;
             description?: string | null | undefined;
@@ -68,10 +121,43 @@ export type GetMangaListQuery = {
     | undefined;
 };
 
-export const GetMangaListDocument = gql`
-  query getMangaList {
-    getMangaList {
-      id
+export type GetLatestMangaUpdatesQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetLatestMangaUpdatesQuery = {
+  __typename?: 'Query';
+  latest?:
+    | Array<
+        | {
+            __typename?: 'GetMangaDetailsResponse';
+            ID?: string | null | undefined;
+            name?: string | null | undefined;
+            thumbnail?: string | null | undefined;
+            chapters?:
+              | Array<
+                  | {
+                      __typename?: 'Chapters';
+                      ID?: string | null | undefined;
+                      CreatedAt?: string | null | undefined;
+                    }
+                  | null
+                  | undefined
+                >
+              | null
+              | undefined;
+          }
+        | null
+        | undefined
+      >
+    | null
+    | undefined;
+};
+
+export const GetAllMangasDocument = gql`
+  query getAllMangas {
+    list: getAllMangas {
+      ID
       name
       thumbnail
       description
@@ -79,11 +165,36 @@ export const GetMangaListDocument = gql`
   }
 `;
 
-export function useGetMangaListQuery(
-  options: Omit<Urql.UseQueryArgs<GetMangaListQueryVariables>, 'query'> = {}
+export function useGetAllMangasQuery(
+  options: Omit<Urql.UseQueryArgs<GetAllMangasQueryVariables>, 'query'> = {}
 ) {
-  return Urql.useQuery<GetMangaListQuery>({
-    query: GetMangaListDocument,
+  return Urql.useQuery<GetAllMangasQuery>({
+    query: GetAllMangasDocument,
+    ...options,
+  });
+}
+export const GetLatestMangaUpdatesDocument = gql`
+  query getLatestMangaUpdates {
+    latest: getLatestMangaUpdates {
+      ID
+      name
+      thumbnail
+      chapters {
+        ID
+        CreatedAt
+      }
+    }
+  }
+`;
+
+export function useGetLatestMangaUpdatesQuery(
+  options: Omit<
+    Urql.UseQueryArgs<GetLatestMangaUpdatesQueryVariables>,
+    'query'
+  > = {}
+) {
+  return Urql.useQuery<GetLatestMangaUpdatesQuery>({
+    query: GetLatestMangaUpdatesDocument,
     ...options,
   });
 }

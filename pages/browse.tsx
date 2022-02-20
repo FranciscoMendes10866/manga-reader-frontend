@@ -1,20 +1,15 @@
-import {
-  Box,
-  Container,
-  SimpleGrid,
-  useDisclosure,
-  useMediaQuery,
-} from '@chakra-ui/react';
+import { Box, Container, SimpleGrid, useDisclosure } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { useGetMangaListQuery, Manga } from '../generated/graphql';
+import { useGetAllMangasQuery } from '../generated/graphql';
 import { MangaFiltering, BottomSheet, VerticalCard } from '../components';
+import { useScreen } from '../hooks';
 
 const Browse: NextPage = () => {
-  const [isLargerThan803] = useMediaQuery('(min-width: 803px)');
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [result] = useGetMangaListQuery();
+  const [result] = useGetAllMangasQuery();
+  const isDesktop = useScreen();
 
   return (
     <div>
@@ -25,7 +20,7 @@ const Browse: NextPage = () => {
       </Head>
 
       <main>
-        <Container paddingTop={isLargerThan803 ? 12 : 10} maxW="container.xl">
+        <Container paddingTop={isDesktop ? 12 : 10} maxW="container.xl">
           <MangaFiltering
             search={(value) => console.log(value)}
             selectCategory={(option) => console.log(option)}
@@ -41,12 +36,19 @@ const Browse: NextPage = () => {
             content={<Box />}
           />
           <SimpleGrid
-            columns={{ sm: 2, md: 4, lg: 6 }}
-            spacing={isLargerThan803 ? 10 : 8}
+            columns={{ sm: 2, md: 3, lg: 5 }}
+            spacing={isDesktop ? 6 : 4}
           >
-            {result.data?.getMangaList &&
-              result.data?.getMangaList.map((manga) => (
-                <VerticalCard key={manga?.id} manga={manga as Manga} />
+            {result.data?.list &&
+              result.data?.list.map((manga) => (
+                <VerticalCard
+                  key={manga?.ID}
+                  manga={{
+                    ID: manga?.ID,
+                    thumbnail: manga?.thumbnail,
+                    name: manga?.name,
+                  }}
+                />
               ))}
           </SimpleGrid>
         </Container>

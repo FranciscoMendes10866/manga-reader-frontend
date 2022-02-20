@@ -4,7 +4,7 @@ specifiers:
   '@chakra-ui/react': ^1.7.4
   '@emotion/react': ^11.7.1
   '@emotion/styled': ^11.6.0
-  '@fontsource/sora': ^4.5.0
+  '@fontsource/poppins': ^4.5.0
   '@graphql-codegen/cli': 2.3.1
   '@graphql-codegen/typescript': 2.4.2
   '@graphql-codegen/typescript-operations': 2.2.2
@@ -15,6 +15,7 @@ specifiers:
   '@types/react': 17.0.38
   '@typescript-eslint/eslint-plugin': ^5.9.1
   '@typescript-eslint/parser': ^5.9.1
+  dayjs: ^1.10.7
   eslint: ^7.32.0
   eslint-config-next: 12.0.8
   eslint-config-prettier: ^8.3.0
@@ -37,12 +38,14 @@ specifiers:
   react-icons: ^4.3.1
   typescript: 4.5.4
   urql: ^2.0.6
+  usehooks-ts: ^2.2.2
 
 dependencies:
   '@chakra-ui/react': 1.7.4_22baa6f5acaf9d65b412ab335954e6a6
   '@emotion/react': 11.7.1_b08e3c15324cbe90a6ff8fcd416c932c
   '@emotion/styled': 11.6.0_0044a6ec6dcf5de7705bffaaff7afd26
-  '@fontsource/sora': 4.5.0
+  '@fontsource/poppins': 4.5.0
+  dayjs: 1.10.7
   framer-motion: 5.6.0_react-dom@17.0.2+react@17.0.2
   graphql: 16.2.0
   graphql-tag: 2.12.6_graphql@16.2.0
@@ -51,6 +54,7 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
   react-icons: 4.3.1_react@17.0.2
   urql: 2.0.6_graphql@16.2.0+react@17.0.2
+  usehooks-ts: 2.2.2_react@17.0.2
 
 devDependencies:
   '@graphql-codegen/cli': 2.3.1_94699f1327f38cf86dd76451498605dd
@@ -1839,8 +1843,8 @@ packages:
       - supports-color
     dev: true
 
-  /@fontsource/sora/4.5.0:
-    resolution: {integrity: sha512-bXr7HZPHh/dtfcp9UfEIrYhiMzmcsGvooz9kkmxi5iYwuqs4O1YWfkNbbPSMoRH/cucrMtlGUuC9eRbFx4Yn5Q==}
+  /@fontsource/poppins/4.5.0:
+    resolution: {integrity: sha512-RqgMIQqKHWNH3IUj+a0MAhlb4g5fftsXRTJ2bauefBmfM8Ja5q+qQZjKwyB/iCc+paJD320zFnLJ8G+y1ZyemQ==}
     dev: false
 
   /@graphql-codegen/cli/2.3.1_94699f1327f38cf86dd76451498605dd:
@@ -3624,6 +3628,10 @@ packages:
   /date-fns/1.30.1:
     resolution: {integrity: sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==}
     dev: true
+
+  /dayjs/1.10.7:
+    resolution: {integrity: sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==}
+    dev: false
 
   /debounce/1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
@@ -7280,6 +7288,14 @@ packages:
       react: ^16.8.0 || ^17.0.0
     dependencies:
       object-assign: 4.1.1
+      react: 17.0.2
+    dev: false
+
+  /usehooks-ts/2.2.2_react@17.0.2:
+    resolution: {integrity: sha512-hx+GtJAQYJHonJ+zuDkXD9pwkd34MRxY2Ds9ViNe4o39oRHoPb13wPLkhiaJb4PhNfKQ2JoeFZQQLGgJAOzqiQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
       react: 17.0.2
     dev: false
 

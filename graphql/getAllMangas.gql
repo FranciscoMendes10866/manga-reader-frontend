@@ -1,0 +1,8 @@
+query getAllMangas {
+  list: getAllMangas {
+    ID
+    name
+    thumbnail
+    description
+  }
+}

@@ -1,8 +1,0 @@
-query getMangaList {
-  getMangaList {
-    id
-    name
-    thumbnail
-    description
-  }
-}

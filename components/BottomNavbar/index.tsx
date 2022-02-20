@@ -1,6 +1,5 @@
 import { Flex, Text } from '@chakra-ui/react';
 import { MdDynamicFeed } from 'react-icons/md';
-import { GiCrystalGrowth } from 'react-icons/gi';
 import { RiSearch2Fill } from 'react-icons/ri';
 import { BsFillBookmarkFill } from 'react-icons/bs';
 import type { NextPage } from 'next';
@@ -24,12 +23,6 @@ export const BottomNavbar: NextPage = () => (
       <Flex flexDirection="column" alignItems="center" justifyContent="center">
         <MdDynamicFeed size={27} />
         <Text marginTop={1}>Featured</Text>
-      </Flex>
-    </Link>
-    <Link href="/popular">
-      <Flex flexDirection="column" alignItems="center" justifyContent="center">
-        <GiCrystalGrowth size={27} />
-        <Text marginTop={1}>Popular</Text>
       </Flex>
     </Link>
     <Link href="/browse">

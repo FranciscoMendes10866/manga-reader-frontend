@@ -1,19 +1,20 @@
 import type { AppProps } from 'next/app';
-import { Box, ChakraProvider, useMediaQuery } from '@chakra-ui/react';
+import { Box, ChakraProvider } from '@chakra-ui/react';
 import { Provider } from 'urql';
 
 import theme from '../utils/theme';
 import urqlClient from '../graphql/client';
 import { Navbar, BottomNavbar } from '../components';
+import { useScreen } from '../hooks';
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const [isLargerThan803] = useMediaQuery('(min-width: 803px)');
+  const isDesktop = useScreen();
 
   return (
     <Provider value={urqlClient}>
       <ChakraProvider theme={theme}>
         <Box>
-          {isLargerThan803 ? <Navbar /> : <BottomNavbar />}
+          {isDesktop ? <Navbar /> : <BottomNavbar />}
           <Component {...pageProps} />
           <Box
             top={0}
