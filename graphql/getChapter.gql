@@ -1,0 +1,10 @@
+query getChapter($chapterId: ID!) {
+  chapter: getChapter(chapterId: $chapterId) {
+    ID
+    name
+    manga_id
+    pages {
+      url
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import { Image, Box, Text, Flex, Button } from '@chakra-ui/react';
 import { useHover } from 'usehooks-ts';
 import type { NextPage } from 'next';
-import { memo, useRef } from 'react';
+import { memo, useCallback, useRef } from 'react';
+import { useRouter } from 'next/router'
 
 import { GetMangaDetailsResponse } from '../../generated/graphql';
 
@@ -12,6 +13,11 @@ interface IVerticalCardProps {
 const Component: NextPage<IVerticalCardProps> = ({ manga }) => {
   const hoverRef = useRef(null);
   const isHover = useHover(hoverRef);
+  const router = useRouter()
+
+  const handleRouting = useCallback(() => {
+    router.push(`/manga/${manga.ID}`)
+  }, [])
 
   return (
     <Box
@@ -54,7 +60,7 @@ const Component: NextPage<IVerticalCardProps> = ({ manga }) => {
             : manga.name}
         </Text>
         {isHover && (
-          <Button width="full" marginTop={2} height={10}>
+          <Button width="full" marginTop={2} height={10} onClick={handleRouting}>
             View
           </Button>
         )}

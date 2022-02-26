@@ -1,0 +1,13 @@
+query getMangaDetails($mangaId: ID!) {
+  details: getMangaDetails(mangaId: $mangaId) {
+    ID
+    name
+    thumbnail
+    description
+    thumbnail
+    chapters {
+      ID
+      name
+    }
+  }
+}

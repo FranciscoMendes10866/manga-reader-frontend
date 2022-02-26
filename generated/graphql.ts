@@ -2,15 +2,9 @@ import gql from 'graphql-tag';
 import * as Urql from 'urql';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -93,108 +87,104 @@ export type Query = {
   getMangaDetails?: Maybe<GetMangaDetailsResponse>;
 };
 
+
 export type QueryGetChapterArgs = {
   chapterId: Scalars['ID'];
 };
+
 
 export type QueryGetMangaDetailsArgs = {
   mangaId: Scalars['ID'];
 };
 
-export type GetAllMangasQueryVariables = Exact<{ [key: string]: never }>;
+export type GetAllMangasQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type GetAllMangasQuery = {
-  __typename?: 'Query';
-  list?:
-    | Array<
-        | {
-            __typename?: 'GetAllMangasResponse';
-            ID?: string | null | undefined;
-            name?: string | null | undefined;
-            thumbnail?: string | null | undefined;
-            description?: string | null | undefined;
-          }
-        | null
-        | undefined
-      >
-    | null
-    | undefined;
-};
 
-export type GetLatestMangaUpdatesQueryVariables = Exact<{
-  [key: string]: never;
+export type GetAllMangasQuery = { __typename?: 'Query', list?: Array<{ __typename?: 'GetAllMangasResponse', ID?: string | null | undefined, name?: string | null | undefined, thumbnail?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined };
+
+export type GetChapterQueryVariables = Exact<{
+  chapterId: Scalars['ID'];
 }>;
 
-export type GetLatestMangaUpdatesQuery = {
-  __typename?: 'Query';
-  latest?:
-    | Array<
-        | {
-            __typename?: 'GetMangaDetailsResponse';
-            ID?: string | null | undefined;
-            name?: string | null | undefined;
-            thumbnail?: string | null | undefined;
-            chapters?:
-              | Array<
-                  | {
-                      __typename?: 'Chapters';
-                      ID?: string | null | undefined;
-                      CreatedAt?: string | null | undefined;
-                    }
-                  | null
-                  | undefined
-                >
-              | null
-              | undefined;
-          }
-        | null
-        | undefined
-      >
-    | null
-    | undefined;
-};
+
+export type GetChapterQuery = { __typename?: 'Query', chapter?: { __typename?: 'GetChapterResponse', ID?: string | null | undefined, name?: string | null | undefined, manga_id?: string | null | undefined, pages?: Array<{ __typename?: 'Pages', url?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined };
+
+export type GetLatestMangaUpdatesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetLatestMangaUpdatesQuery = { __typename?: 'Query', latest?: Array<{ __typename?: 'GetMangaDetailsResponse', ID?: string | null | undefined, name?: string | null | undefined, thumbnail?: string | null | undefined, chapters?: Array<{ __typename?: 'Chapters', ID?: string | null | undefined, CreatedAt?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
+
+export type GetMangaDetailsQueryVariables = Exact<{
+  mangaId: Scalars['ID'];
+}>;
+
+
+export type GetMangaDetailsQuery = { __typename?: 'Query', details?: { __typename?: 'GetMangaDetailsResponse', ID?: string | null | undefined, name?: string | null | undefined, thumbnail?: string | null | undefined, description?: string | null | undefined, chapters?: Array<{ __typename?: 'Chapters', ID?: string | null | undefined, name?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined };
+
 
 export const GetAllMangasDocument = gql`
-  query getAllMangas {
-    list: getAllMangas {
-      ID
-      name
-      thumbnail
-      description
+    query getAllMangas {
+  list: getAllMangas {
+    ID
+    name
+    thumbnail
+    description
+  }
+}
+    `;
+
+export function useGetAllMangasQuery(options: Omit<Urql.UseQueryArgs<GetAllMangasQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetAllMangasQuery>({ query: GetAllMangasDocument, ...options });
+};
+export const GetChapterDocument = gql`
+    query getChapter($chapterId: ID!) {
+  chapter: getChapter(chapterId: $chapterId) {
+    ID
+    name
+    manga_id
+    pages {
+      url
     }
   }
-`;
-
-export function useGetAllMangasQuery(
-  options: Omit<Urql.UseQueryArgs<GetAllMangasQueryVariables>, 'query'> = {}
-) {
-  return Urql.useQuery<GetAllMangasQuery>({
-    query: GetAllMangasDocument,
-    ...options,
-  });
 }
+    `;
+
+export function useGetChapterQuery(options: Omit<Urql.UseQueryArgs<GetChapterQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetChapterQuery>({ query: GetChapterDocument, ...options });
+};
 export const GetLatestMangaUpdatesDocument = gql`
-  query getLatestMangaUpdates {
-    latest: getLatestMangaUpdates {
+    query getLatestMangaUpdates {
+  latest: getLatestMangaUpdates {
+    ID
+    name
+    thumbnail
+    chapters {
       ID
-      name
-      thumbnail
-      chapters {
-        ID
-        CreatedAt
-      }
+      CreatedAt
     }
   }
-`;
-
-export function useGetLatestMangaUpdatesQuery(
-  options: Omit<
-    Urql.UseQueryArgs<GetLatestMangaUpdatesQueryVariables>,
-    'query'
-  > = {}
-) {
-  return Urql.useQuery<GetLatestMangaUpdatesQuery>({
-    query: GetLatestMangaUpdatesDocument,
-    ...options,
-  });
 }
+    `;
+
+export function useGetLatestMangaUpdatesQuery(options: Omit<Urql.UseQueryArgs<GetLatestMangaUpdatesQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetLatestMangaUpdatesQuery>({ query: GetLatestMangaUpdatesDocument, ...options });
+};
+export const GetMangaDetailsDocument = gql`
+    query getMangaDetails($mangaId: ID!) {
+  details: getMangaDetails(mangaId: $mangaId) {
+    ID
+    name
+    thumbnail
+    description
+    thumbnail
+    chapters {
+      ID
+      name
+    }
+  }
+}
+    `;
+
+export function useGetMangaDetailsQuery(options: Omit<Urql.UseQueryArgs<GetMangaDetailsQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetMangaDetailsQuery>({ query: GetMangaDetailsDocument, ...options });
+};
